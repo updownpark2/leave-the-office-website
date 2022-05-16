@@ -3,3 +3,47 @@
 .hidden{
     display: none;
 }
+h2{
+    text-align: center;
+    margin-top: 30px;
+    font-size: 30px;
+}
+.timetogo_form{
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+.timetogo_input1{
+    border: none;
+    border-bottom: 1px solid black;
+    margin-right: 5px;
+}
+.timetogo_input1::placeholder{
+ text-align: center;
+}
+.timetogo_input2{
+    border: none;
+    border-bottom: 1px solid black;
+}
+.timetogo_input2::placeholder{
+    text-align: center;
+}
+.timetogo_form button{
+    border: none;
+    border-radius: 5px;
+    margin-left: 10px;
+}
+h1{display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    color: brown;
+}
+h3{
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+h3 span{
+    font-size: 30px;
+    font-weight: 600;
+}
