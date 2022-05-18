@@ -107,13 +107,36 @@ const moneyInput = document.querySelector(".moneyday input")
 
 function moneyday(event){
     event.preventDefault()
-    paintmoney()
-
-}
-function paintmoney(){
     const moneyValue= moneyInput.value;
     const h4 = document.querySelector("h4")
-    h4.innerText=moneyValue;
+    if(moneyValue-new Date().getDate()<0){
+        h4.innerText= "이번달은..이미 지급이됐네요.."
+    }
+    else if(moneyValue-new Date().getDate()==0){
+        h4.innerText= "오늘은 월급날!!!"
+    }
+    else{
+    h4.innerText=moneyValue-new Date().getDate()
+    }
     localStorage.setItem("moneyday",moneyValue)
+    moneyInput.value=""
 }
-moneyForm.addEventListener("submit",moneyday)
+const savedmoney = localStorage.getItem("moneyday")
+if(savedmoney==null){
+    moneyForm.addEventListener("submit",moneyday)
+
+}
+else{
+    const hh4 = document.querySelector("h4")
+    moneyForm.addEventListener("submit",moneyday)
+    if(savedmoney-new Date().getDate()<0){
+        hh4.innerText= "이번달은..이미 지급이됐네요.."
+    }
+    else if(savedmoney-new Date().getDate()==0){
+        hh4.innerText= "오늘은 월급날!!!"
+    }
+    else{
+    hh4.innerText=savedmoney-new Date().getDate()
+    }
+}
+//월급날 계산 기능 구현
