@@ -53,3 +53,67 @@ function savedTime(){
     }
     }
 //시간을 만드는건했지만 굉장히지저분하다.. function을 인자받아서 다시 사용하는 법을 배워야한다.
+
+const todoForm = document.querySelector(".todo")
+const todoInput = document.querySelector(".todo input")
+let array = [];
+function saveTodos(){
+    localStorage.setItem("todolist",JSON.stringify(array));
+}
+function submit(event){
+event.preventDefault();
+const todoValue = todoInput.value;
+todoInput.value=""
+const todoValueObj = {text:todoValue,id:Date.now()}
+paintTodo(todoValueObj);
+array.push(todoValueObj);
+localStorage.setItem("todolist",JSON.stringify(array))
+
+}
+const savedarray = localStorage.getItem("todolist")
+if(savedarray!==null){
+    const supersavedarray = JSON.parse(savedarray);
+    supersavedarray.forEach(paintTodo);
+    array=supersavedarray;
+
+}
+
+function paintTodo(todoValueObj){
+    const ul = document.querySelector("ul")
+    const li = document.createElement("li")
+    li.id = todoValueObj.id
+    const span = document.createElement("span")
+    const button = document.createElement("button");
+    li.innerText = "📌"+todoValueObj.text
+    button.innerText = "❌"
+    ul.appendChild(span)
+    span.appendChild(li)
+    li.appendChild(button);
+    button.addEventListener("click",estimate);
+}
+function estimate(event){
+    const target = event.target.parentElement;
+    target.remove();
+  console.log(parseInt(target.id))
+  function rearray(array){return array.id!==parseInt(target.id)}
+  array= array.filter(rearray);
+  saveTodos()
+}
+todoForm.addEventListener("submit", submit)
+//todolist
+
+const moneyForm = document.querySelector(".moneyday")
+const moneyInput = document.querySelector(".moneyday input")
+
+function moneyday(event){
+    event.preventDefault()
+    paintmoney()
+
+}
+function paintmoney(){
+    const moneyValue= moneyInput.value;
+    const h4 = document.querySelector("h4")
+    h4.innerText=moneyValue;
+    localStorage.setItem("moneyday",moneyValue)
+}
+moneyForm.addEventListener("submit",moneyday)
