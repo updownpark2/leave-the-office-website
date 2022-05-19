@@ -84,7 +84,7 @@ function paintTodo(todoValueObj){
     li.id = todoValueObj.id
     const span = document.createElement("span")
     const button = document.createElement("button");
-    li.innerText = "📌"+todoValueObj.text
+    li.innerText = `📌 ${todoValueObj.text}`
     button.innerText = "❌"
     ul.appendChild(span)
     span.appendChild(li)

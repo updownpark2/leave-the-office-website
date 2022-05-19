@@ -47,3 +47,31 @@ h3 span{
     font-size: 30px;
     font-weight: 600;
 }
+.todo{
+display: flex;
+margin-top: 20px;
+}
+.todo input{
+    border: none;
+    border-bottom: 1px solid red;
+}
+ul li{
+    margin: 5px 0 0 5px;
+
+}
+li button{
+    border: none;
+    background-color: white;
+}
+.moneyday{
+    display: flex;
+    justify-content: end;
+    margin-right: 30px;
+}
+h4{
+    display: flex;
+    justify-content: end;
+    margin-right: 30px;
+    margin-top: 20px;
+    font-size: 30px;
+}
