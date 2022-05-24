@@ -8,6 +8,7 @@ setInterval(clock,1000)
 //시계완성
 const hoursInput = document.querySelector(".timetogo_input1")
 const miniuteInput = document.querySelector(".timetogo_input2")
+const buttons = document.querySelector(".timetogo_form button")
 const timeform = document.querySelector(".timetogo_form")
 const togospan = document.querySelector("h3 span")
 function savedtime(event){
@@ -18,7 +19,9 @@ const hoursValue = hoursInput.value;
 const miniuteValue= miniuteInput.value;
 localStorage.setItem("hours",hoursValue);
 localStorage.setItem("miniute",miniuteValue);
-timeform.classList.add("hidden")
+hoursInput.classList.add("hidden")
+miniuteInput.classList.add("hidden")
+buttons.classList.add("hidden")
 }
 function lastclock(){
     const short = new Date()
@@ -36,17 +39,18 @@ const savedhours = localStorage.getItem("hours")
 const savedMin= localStorage.getItem("miniute")
 if(savedhours==null){
     timeform.addEventListener("submit",savedtime);
- timeform.classList.add("hidden")
 }
 else{
-    timeform.classList.add("hidden")
+    hoursInput.classList.add("hidden")
+miniuteInput.classList.add("hidden")
+buttons.classList.add("hidden")
     savedTime()
     setInterval(savedTime,1000);
 }
 function savedTime(){
     const short1 = new Date()
     if(savedMin-short1.getMinutes()<0){
-        togospan.innerText=`${savedhours-short1.getHours()-1}시간 ${savedMin-short1.getMinutes()+60} 분!`
+        togospan.innerText=` ${savedhours-short1.getHours()-1}시간 ${savedMin-short1.getMinutes()+60} 분!`
     }
     else{
         togospan.innerText=`${savedhours-short1.getHours()}시간${savedMin-short1.getMinutes()} 분!`
@@ -85,7 +89,7 @@ function paintTodo(todoValueObj){
     const span = document.createElement("span")
     const button = document.createElement("button");
     li.innerText = `📌 ${todoValueObj.text}`
-    button.innerText = "❌"
+    button.innerText = "(삭제)"
     ul.appendChild(span)
     span.appendChild(li)
     li.appendChild(button);
@@ -109,6 +113,7 @@ function moneyday(event){
     event.preventDefault()
     const moneyValue= moneyInput.value;
     const h4 = document.querySelector("h4")
+    moneyInput.classList.add("hidden")
     if(moneyValue-new Date().getDate()<0){
         h4.innerText= "이번달은..이미 지급이됐네요.."
     }
@@ -116,7 +121,7 @@ function moneyday(event){
         h4.innerText= "오늘은 월급날!!!"
     }
     else{
-    h4.innerText=moneyValue-new Date().getDate()
+    h4.innerText=moneyValue-new Date().getDate()+"일 남았습니다ㅎㅎ"
     }
     localStorage.setItem("moneyday",moneyValue)
     moneyInput.value=""
@@ -127,6 +132,7 @@ if(savedmoney==null){
 
 }
 else{
+    moneyInput.classList.add("hidden")
     const hh4 = document.querySelector("h4")
     moneyForm.addEventListener("submit",moneyday)
     if(savedmoney-new Date().getDate()<0){
@@ -136,7 +142,7 @@ else{
         hh4.innerText= "오늘은 월급날!!!"
     }
     else{
-    hh4.innerText=savedmoney-new Date().getDate()
+    hh4.innerText=savedmoney-new Date().getDate()+"일 남았습니다ㅎㅎ"
     }
 }
 //월급날 계산 기능 구현

@@ -36,27 +36,53 @@ h2{
 h1{display: flex;
     justify-content: center;
     margin-top: 20px;
-    color: brown;
+    font-size: 40px;
+    color:rgba(0, 0, 0, 0.7);
 }
 h3{
     display: flex;
     justify-content: center;
     margin-top: 20px;
+    font-size: 30px;
 }
 h3 span{
     font-size: 30px;
     font-weight: 600;
+    animation: show 1.5s ease-in-out infinite;
+}
+@keyframes show {
+    0%{
+opacity: 1;
+    }
+    50%{
+opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
 }
 .todo{
 display: flex;
 margin-top: 20px;
 }
 .todo input{
+    margin-top: 60px;
     border: none;
-    border-bottom: 1px solid red;
+    border:1px solid tomato;
+    border-radius: 10px;
+    font-size: 20px;
+    padding: 10px;
+    text-align: center;
+   
+}
+.todo input::placeholder{
+    color: black
+}
+ul{
+    margin-top: 30px;
 }
 ul li{
-    margin: 5px 0 0 5px;
+    margin: 10px 0 0 10px;
 
 }
 li button{
@@ -67,6 +93,18 @@ li button{
     display: flex;
     justify-content: end;
     margin-right: 30px;
+    margin-top: -46px;
+
+}
+.moneyday input{
+    font-size: 20px;
+    padding: 10px;
+    text-align: center;
+    border: 1px solid tomato;
+    border-radius: 10px;
+}
+.moneyday input::placeholder{
+    color: black;
 }
 h4{
     display: flex;
@@ -74,4 +112,17 @@ h4{
     margin-right: 30px;
     margin-top: 20px;
     font-size: 30px;
+}
+.banner{
+    margin-top: 30px;
+    margin-right: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
+
+}
+a img{
+  width: 60px;
+  height: 60px;
 }
